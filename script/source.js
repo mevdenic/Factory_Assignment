@@ -1,14 +1,15 @@
 $(document).ready(() => {
-    const count = $(".top-row").children().length;
-    const width = count * 25;
+    const leng = $(".top-row").children().length;
+    const width = leng * 25;
   
     //container expansion
-    $(".top-container").css("width", width + "%");
-    $(".bottom-container").css("width", width + "%");
+    $(".top-container").css("width", `${width}%`);
+    $(".bottom-container").css("width", `${width}%`);
   
     //left scroll
-    $('.button-left').on('click', function () {
+    $('.button-left').on('click', () => {
       $('.button-left').prop('disabled', true);
+      $('.button-right').prop('disabled', true);
       //last child width
       let childWidthTop = $(".top-row img").last().width() + 10;
       let childWidthBottom = $(".bottom-row img").last().width() + 10;
@@ -16,6 +17,7 @@ $(document).ready(() => {
         left: "-" + childWidthTop
       }, 400, () => {
         $('.button-left').prop('disabled', false);
+        $('.button-right').prop('disabled', false);
         $(".top-row").children().eq(-1).insertBefore($(".top-row").children().eq(0)).show("slow");
         $(".top-row").removeAttr("style");
       });
@@ -29,6 +31,7 @@ $(document).ready(() => {
   
     //right scroll
     $('.button-right').on('click', () => {
+      $('.button-left').prop('disabled', true);
       $('.button-right').prop('disabled', true);
       //first child width
       let childWidthTop = $(".top-row img").first().width() + 10;
@@ -36,6 +39,7 @@ $(document).ready(() => {
       $(".top-row").animate({
         right: "-" + childWidthTop
       }, 400, () => {
+        $('.button-left').prop('disabled', false);
         $('.button-right').prop('disabled', false);
         $(".top-row").children().eq(0).insertAfter($(".top-row").children().eq(-1)).hide().show();
         $(".top-row").removeAttr("style"); 

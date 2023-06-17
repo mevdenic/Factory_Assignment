@@ -24,11 +24,13 @@ body{
     overflow-x:hidden;
     border-radius: $borderRad;
     align-self: flex-end;
+    height: 100%;
     .top-row{
         display: flex;
         gap: 10px;
         position: relative;
         max-width: 1230px;
+        height: 100%;
     }
 }
 
@@ -38,11 +40,13 @@ body{
     direction: rtl;
     overflow-x:hidden;
     border-radius: $borderRad;
+    height: 100%;
     .bottom-row{
         display: flex;
         gap: 10px;  
         position: relative;
         max-width: 1080px;
+        height: 100%;
     }
 }
 
